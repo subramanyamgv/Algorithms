@@ -82,7 +82,7 @@ public class Searching {
 
     /**
      * Interpolation Search:
-     * Variation of Binary Search, instead of using middle key, it estimates the position of the key using values
+     * Variation of Binary Search, instead of using middle key, estimate the position of the key using values
      *  arr[low] and arr[high]. i.e., mid = low + ((key - arr[low]) * (high - low)) / (arr[high] - arr[low])
      * @param a
      * @return boolean
