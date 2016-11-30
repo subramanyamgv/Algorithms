@@ -1,10 +1,9 @@
 package com.algo;
 
-import sun.reflect.generics.tree.Tree;
-
-import java.time.temporal.Temporal;
 import java.util.Comparator;
 import java.util.Iterator;
+
+import static com.algo.ADT.*;
 
 /**
  * Created by Subramanyam on 29-Nov-2016.
@@ -13,6 +12,8 @@ public class BST<E> {
 
     Comparator<E> comparator;
     TreeNode<E> root;
+
+    public enum TRAVERSAL {INORDER, PREORDER, POSTORDER, LEVELORDER};
 
     public static class TreeNode<E> {
 
@@ -32,8 +33,19 @@ public class BST<E> {
         this.comparator = comparator;
     }
 
-    public Iterator<E> getInorderIterator() {
-        return new InorderIterator<E>(root);
+    public Iterator<E> getIterator(TRAVERSAL traversal) {
+        switch (traversal) {
+            case INORDER:
+                return new InorderIterator<E>(root);
+            case PREORDER:
+                return new PreorderIterator<E>(root);
+            case POSTORDER:
+                return new PostOrderIterator<E>(root);
+            case LEVELORDER:
+                return new LevelOrderIterator<E>(root);
+            default:
+                return null;
+        }
     }
 
     public void init(E[] items) {
@@ -130,10 +142,14 @@ public class BST<E> {
         }
     }
 
+    /**
+     * Iterator for inorder traversal of Binary Search Tree
+     * @param <E>
+     */
     class InorderIterator<E> implements Iterator<E> {
 
-        ADT.Stack<TreeNode<E>> stack = new ADT.Stack<TreeNode<E>>();
-        TreeNode<E> current;
+        private Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
+        private TreeNode<E> current;
 
         public InorderIterator(TreeNode<E> root) {
             this.current = root;
@@ -160,4 +176,93 @@ public class BST<E> {
         }
     }
 
+    /**
+     * Implements preorder traversal iterator
+     */
+    class PreorderIterator<E> implements Iterator<E> {
+
+        private Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
+        private TreeNode<E> current;
+
+        public PreorderIterator(TreeNode<E> root) {
+            this.current = root;
+        }
+
+        @Override
+        public boolean hasNext() {
+
+            if (current == null)
+                return false;
+
+            if (current.right != null) stack.push(current.right);
+            if (current.left != null) stack.push(current.left);
+
+            return true;
+        }
+
+        @Override
+        public E next() {
+            TreeNode<E> temp = current;
+            current = stack.pop();
+            return temp.data;
+        }
+    }
+
+    /**
+     * TODO: Implement postorder traversal iterator
+     */
+    class PostOrderIterator<E> implements Iterator<E> {
+
+        Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
+        TreeNode<E> current;
+
+        public PostOrderIterator(TreeNode<E> root) {
+            this.current = root;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public E next() {
+            return null;
+        }
+    }
+
+    /**
+     * Level order traversal iterator
+     * @param <E>
+     */
+    class LevelOrderIterator<E> implements Iterator<E> {
+
+        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>();
+        TreeNode<E> current;
+
+        public LevelOrderIterator(TreeNode<E> root) {
+            current = root;
+            queue.put(current);
+        }
+
+        @Override
+        public boolean hasNext() {
+
+            current = queue.get();
+
+            if (current == null) {
+                return false;
+            }
+
+            if (current.left != null) queue.put(current.left);
+            if (current.right != null) queue.put(current.right);
+
+            return true;
+        }
+
+        @Override
+        public E next() {
+            return current.data;
+        }
+    }
 }

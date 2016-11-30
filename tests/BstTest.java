@@ -49,7 +49,7 @@ public class BstTest {
 
         bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        Iterator<Integer> itr = bst.getInorderIterator();
+        Iterator<Integer> itr = bst.getIterator(BST.TRAVERSAL.INORDER);
 
         int[] inorder = new int[9];
         int count = 0;
@@ -58,5 +58,36 @@ public class BstTest {
         }
 
         assertArrayEquals(inorder, new int[]{1, 3, 4, 6, 7, 8, 10, 13, 14});
+    }
+
+    @Test
+    public void preorderTreeIteratorTest() {
+
+        bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
+
+        Iterator<Integer> itr = bst.getIterator(BST.TRAVERSAL.PREORDER);
+
+        int[] preorder = new int[9];
+        int count = 0;
+        while (itr.hasNext()) {
+            preorder[count++] = itr.next();
+        }
+
+        assertArrayEquals(preorder, new int[]{8, 3, 1, 6, 4, 7, 10, 14, 13});
+    }
+
+    @Test
+    public void levelorderTreeIteratorTest() {
+        bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
+
+        Iterator<Integer> itr = bst.getIterator(BST.TRAVERSAL.LEVELORDER);
+
+        int[] levelorder = new int[9];
+        int count = 0;
+        while (itr.hasNext()) {
+            levelorder[count++] = itr.next();
+        }
+
+        assertArrayEquals(levelorder, new int[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
     }
 }
