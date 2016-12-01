@@ -56,6 +56,6 @@ public class NumberTest {
     public void getNumberTest() {
 
         int n = 36492827;
-        assertEquals(4928, num.getNumber(n, 3, 6));
+        assertEquals(4928, num.getSubNumber(n, 3, 6));
     }
 }

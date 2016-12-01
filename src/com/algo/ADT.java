@@ -1,5 +1,7 @@
 package com.algo;
 
+import java.util.Iterator;
+
 /**
  * Created by Subramanyam on 29-Nov-2016.
  */
@@ -7,18 +9,29 @@ public class ADT {
 
     public static class Stack<E> {
 
+        public interface StackListener<E> {
+            public void updated(Stack<E> stack);
+        }
+
         private LinkedList<E> list;
+        private int count = 0;
 
         public Stack() {
             list = new LinkedList<E>();
         }
 
         public void push(E data) {
+            count ++;
             list.insertFirst(data);
         }
 
         public E pop() {
-            return list.removeFirst();
+            E e = list.removeFirst();
+
+            if (e != null)
+                count --;
+
+            return e;
         }
 
         public E peek() {
@@ -26,7 +39,15 @@ public class ADT {
         }
 
         public boolean isEmpty() {
-            return list.size() == 0;
+            return count == 0;
+        }
+
+        public int getCount() {
+            return count;
+        }
+
+        public Iterator<E> getIterator() {
+            return list.getIterator();
         }
     }
 
@@ -34,17 +55,24 @@ public class ADT {
     public static class Queue<E> {
 
         LinkedList<E> list;
+        private int count = 0;
 
         public Queue() {
             this.list = new LinkedList<E>();
         }
 
         public void put(E data) {
+            count ++;
             list.insertEnd(data);
         }
 
         public E get() {
-            return list.removeFirst();
+            E e = list.removeFirst();
+
+            if (e != null)
+                count --;
+
+            return e;
         }
 
         public E peek() {
@@ -52,7 +80,15 @@ public class ADT {
         }
 
         public boolean isEmpty() {
-            return list.size() == 0;
+            return count == 0;
+        }
+
+        public int getCount() {
+            return count;
+        }
+
+        public Iterator<E> getIterator() {
+            return list.getIterator();
         }
     }
 }

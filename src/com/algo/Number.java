@@ -73,7 +73,7 @@ public class Number {
      * @param pos2
      * @return
      */
-    public int getNumber(int num, int pos1, int pos2) {
+    public int getSubNumber(int num, int pos1, int pos2) {
 
         int nDigits = (int) Math.log10(num) + 1;
 
