@@ -112,9 +112,9 @@ public class BstTest {
     @Test
     public void postorderTreeTraversalTest() {
 
-        bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13, 15, 16, 17, 18});
+        bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        LinkedList<Integer> list = bst.postOrderTraversal(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
+        LinkedList<Integer> list = bst.postOrderTraversal2(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
             @Override
             public void updated(ADT.Stack<BST.TreeNode<Integer>> stack) {
 
@@ -228,5 +228,14 @@ public class BstTest {
 
         assertEquals(true, bst.areEqual(clone));
         assertEquals(true, bst.areEqualIterative(clone));
+    }
+
+    @Test
+    public void isBSTTest() {
+
+        bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
+
+        assertEquals(true, bst.isBST());
+        assertEquals(true, bst.isBSTIterative());
     }
 }

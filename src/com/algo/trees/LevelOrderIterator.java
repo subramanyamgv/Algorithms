@@ -15,20 +15,20 @@ class LevelOrderIterator<E> implements Iterator<E> {
 
     public LevelOrderIterator(BST.TreeNode<E> root) {
         current = root;
-        queue.put(current);
+        queue.offer(current);
     }
 
     @Override
     public boolean hasNext() {
 
-        current = queue.get();
+        current = queue.poll();
 
         if (current == null) {
             return false;
         }
 
-        if (current.left != null) queue.put(current.left);
-        if (current.right != null) queue.put(current.right);
+        if (current.left != null) queue.offer(current.left);
+        if (current.right != null) queue.offer(current.right);
 
         return true;
     }

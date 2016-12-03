@@ -58,4 +58,12 @@ public class NumberTest {
         int n = 36492827;
         assertEquals(4928, num.getSubNumber(n, 3, 6));
     }
+
+    @Test
+    public void getLogNFactorial() {
+
+        double sum = num.logNfactorial(10);
+
+        assertTrue(true);
+    }
 }

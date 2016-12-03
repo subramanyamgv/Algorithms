@@ -87,4 +87,42 @@ public class Number {
 
         return num;
     }
+
+    /**
+     * Problem: Return number of ways a number can be expressed as double squares
+     * e.g., 10 = 3^2 + 1^2; 25 = 5^2 + 0^2 or 4^2 + 3^2
+     *
+     * Solution: N = x^2 + y^2;  y = sqrt(N - x^2).
+     * Therefore, find all numbers for which (N - x^2) is a perfect square
+     *
+     * @param num
+     * @return
+     */
+    public int doubleSquares(int num) {
+        int p = (int)Math.sqrt((double)num / 2.0);
+        int total = 0;
+        for (int i = 0 ; i < p ; i++) {
+            double j = (int)Math.sqrt((double)num - i*i);
+            if (j - (int)j == 0.0) {
+                total += 1;
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Computes log N!
+     * @param N
+     * @return
+     */
+    public double logNfactorial(int N) {
+        if (N == 0) return 0.0;
+        return Math.log(N) + logNfactorial(N - 1);
+    }
+
+    public int gcd(int p, int q) {
+        return (q == 0) ? p : gcd(q, p%q);
+    }
+
+
 }

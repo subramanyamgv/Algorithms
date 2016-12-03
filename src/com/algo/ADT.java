@@ -61,12 +61,12 @@ public class ADT {
             this.list = new LinkedList<E>();
         }
 
-        public void put(E data) {
+        public void offer(E data) {
             count ++;
             list.insertEnd(data);
         }
 
-        public E get() {
+        public E poll() {
             E e = list.removeFirst();
 
             if (e != null)

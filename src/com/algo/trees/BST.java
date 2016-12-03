@@ -244,18 +244,18 @@ public class BST<E> {
             return;
 
         Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>();
-        queue.put(root);
+        queue.offer(root);
 
         while (!queue.isEmpty()) {
 
-            TreeNode<E> current = queue.get();
+            TreeNode<E> current = queue.poll();
 
             TreeNode<E> temp = current.left;
             current.left = current.right;
             current.right = temp;
 
-            if (current.left != null) queue.put(current.left);
-            if (current.right != null) queue.put(current.right);
+            if (current.left != null) queue.offer(current.left);
+            if (current.right != null) queue.offer(current.right);
         }
     }
 
@@ -280,24 +280,24 @@ public class BST<E> {
 
         TreeNode<E> cloneRoot = new TreeNode<E>(root.data);
 
-        Qorg.put(root);
-        Qclone.put(cloneRoot);
+        Qorg.offer(root);
+        Qclone.offer(cloneRoot);
 
         while (!Qorg.isEmpty()) {
 
-            TreeNode<E> Corg = Qorg.get();
-            TreeNode<E> Cclone = Qclone.get();
+            TreeNode<E> Corg = Qorg.poll();
+            TreeNode<E> Cclone = Qclone.poll();
 
             if (Corg.left != null) {
                 Cclone.left = new TreeNode<E>(Corg.left.data);
-                Qorg.put(Corg.left);
-                Qclone.put(Cclone.left);
+                Qorg.offer(Corg.left);
+                Qclone.offer(Cclone.left);
             }
 
             if (Corg.right != null) {
                 Cclone.right = new TreeNode<E>(Corg.right.data);
-                Qorg.put(Corg.right);
-                Qclone.put(Cclone.right);
+                Qorg.offer(Corg.right);
+                Qclone.offer(Cclone.right);
             }
         }
 
@@ -332,19 +332,19 @@ public class BST<E> {
         Queue<TreeNode<E>> Q1 = new Queue<TreeNode<E>>();
         Queue<TreeNode<E>> Q2 = new Queue<TreeNode<E>>();
 
-        Q1.put(root); Q2.put(bst.root);
+        Q1.offer(root); Q2.offer(bst.root);
 
         while (!Q1.isEmpty() && !Q2.isEmpty()) {
 
-            TreeNode<E> T1 = Q1.get();
-            TreeNode<E> T2 = Q2.get();
+            TreeNode<E> T1 = Q1.poll();
+            TreeNode<E> T2 = Q2.poll();
 
             if (comparator.compare(T1.data, T2.data) != 0)
                 return false;
 
             if (T1.left != null || T2.left != null) {
                 if (T1.left != null && T2.left != null) {
-                    Q1.put(T1.left); Q2.put(T2.left);
+                    Q1.offer(T1.left); Q2.offer(T2.left);
                 } else {
                     return false;
                 }
@@ -352,7 +352,7 @@ public class BST<E> {
 
             if (T1.right != null || T2.right != null) {
                 if (T1.right != null && T2.right != null) {
-                    Q1.put(T1.right); Q2.put(T2.right);
+                    Q1.offer(T1.right); Q2.offer(T2.right);
                 } else {
                     return false;
                 }
@@ -367,18 +367,18 @@ public class BST<E> {
      * @param bst
      * @return
      */
-    public boolean isMirrorEqual(BST<E> bst) {
-        return _isMirrorEqual(bst.getRoot(), root);
+    public boolean areMirrorEqual(BST<E> bst) {
+        return _areMirrorEqual(bst.getRoot(), root);
     }
 
-    private boolean _isMirrorEqual(TreeNode<E> root1, TreeNode<E> root2) {
+    private boolean _areMirrorEqual(TreeNode<E> root1, TreeNode<E> root2) {
 
         if (root1 == null && root2 == null) return true;
         if (root1 == null || root2 == null) return false;
 
         return ((comparator.compare(root1.data, root2.data) == 0) &&
-                _isMirrorEqual(root1.left, root2.right) &&
-                _isMirrorEqual(root1.right, root2.left));
+                _areMirrorEqual(root1.left, root2.right) &&
+                _areMirrorEqual(root1.right, root2.left));
     }
 
     public boolean isBST() {
@@ -389,10 +389,46 @@ public class BST<E> {
 
         return (root == null) ||
                 (
-                    (root.left != null) && (comparator.compare(root.left.data, root.data) < 0) &&
-                    (root.right != null) && (comparator.compare(root.right.data, root.data) > 0) &&
+                    ((root.left == null) || (comparator.compare(root.left.data, root.data) < 0)) &&
+                    ((root.right == null) || (comparator.compare(root.right.data, root.data) > 0)) &&
                     _isBST(root.left) && _isBST(root.right)
                 );
+    }
+
+    public boolean isBSTIterative() {
+
+        if (root == null) return true;
+
+        Queue<TreeNode<E>> queue = new Queue<TreeNode<E>>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+
+            TreeNode<E> c = queue.poll();
+
+            if (c.left != null) {
+                if (comparator.compare(c.left.data, c.data) >= 0)
+                    return false;
+                queue.offer(c.left);
+            }
+
+            if (c.right != null) {
+                if (comparator.compare(c.right.data, c.data) <= 0)
+                    return false;
+                queue.offer(c.right);
+            }
+        }
+
+        return true;
+
+    }
+
+    public void BST2DoublyLinkedList() {
+
+    }
+
+    private void _BST2DoublyLinkedList() {
+
     }
 
     public LinkedList<E> inorderTraversal(Stack.StackListener<TreeNode<E>> listener) {
@@ -472,4 +508,53 @@ public class BST<E> {
 
         return list;
     }
+
+    /**
+     * Every time you push a node to the stack, push it twice. The first one is used
+     * to simulate the function call, the second is to simulate the function frame:
+     * Ref: http://articles.leetcode.com/binary-tree-post-order-traversal/
+     * @param listener
+     * @return
+     */
+    public LinkedList<E> postOrderTraversal2(Stack.StackListener<TreeNode<E>> listener) {
+
+        LinkedList<E> list = new LinkedList<E>();
+        Stack<TreeNode<E>> stack = new Stack<TreeNode<E>>();
+
+        stack.push(root); stack.push(root);
+
+        while (!stack.isEmpty()) {
+
+            TreeNode<E> current = stack.pop();
+
+            if (!stack.isEmpty() && comparator.compare(current.data, stack.peek().data) == 0) {
+                if (current.right != null) {
+                    stack.push(current.right);
+                    stack.push(current.right);
+                }
+                if (current.left != null) {
+                    stack.push(current.left);
+                    stack.push(current.left);
+                }
+            } else {
+                list.add(current.data);
+            }
+        }
+
+        return list;
+    }
+
+//    public boolean isPathSum(int sum) {
+//        return _isPathSum(root, sum);
+//    }
+
+//    private boolean _isPathSum(TreeNode<E> root, int sum) {
+//
+//        if (root == null) {
+//            return sum == 0;
+//        }
+//
+//        return _isPathSum(root.left, sum - root.data) ||
+//                _isPathSum(root.right, sum - root.data);
+//    }
 }
