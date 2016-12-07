@@ -1,4 +1,5 @@
 import com.algo.Number;
+import com.algo.StringUtil;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -66,4 +67,12 @@ public class NumberTest {
 
         assertTrue(true);
     }
+
+    @Test
+    public void binaryTest() {
+        int N = 50;
+        String result = num.binary(N);
+        assertEquals("110010", result);
+    }
+
 }

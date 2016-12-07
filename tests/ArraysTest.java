@@ -56,4 +56,21 @@ public class ArraysTest {
         String exp3 = "(1+{[20+3]*[432+54]})";
         assertEquals(false, arrays.isExpressionBalanced2(exp3));
     }
+
+    @Test
+    public void insertLeftParenthesis() {
+
+        String exp = "1+2)*3-4)*5-6)))";
+        assertEquals("((1+2)*((3-4)*(5-6)))", arrays.insertLeftParentheses(exp));
+
+        String exp2 = "1234+265)*32-24)*8985-23566)))";
+        assertEquals("((1234+265)*((32-24)*(8985-23566)))", arrays.insertLeftParentheses(exp2));
+    }
+
+    @Test
+    public void randomShuffleTest() {
+
+        int []a = {1, 2, 3, 4, 5, 6};
+        arrays.randomShuffle(a);
+    }
 }

@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 public class ADT {
 
-    public static class Stack<E> {
+    public static class Stack<E> implements Iterable<E> {
 
         public interface StackListener<E> {
             public void updated(Stack<E> stack);
@@ -44,6 +44,11 @@ public class ADT {
 
         public int getCount() {
             return count;
+        }
+
+        @Override
+        public Iterator<E> iterator() {
+            return list.getIterator();
         }
 
         public Iterator<E> getIterator() {

@@ -60,4 +60,6 @@ public class SearchingTests {
         assertEquals(4, s.checkIndexAndNumberAreSameInSortedSequence(a2));
 
     }
+
+
 }

@@ -124,5 +124,15 @@ public class Number {
         return (q == 0) ? p : gcd(q, p%q);
     }
 
+    public String binary(int N) {
+
+        String result = "";
+        while (N > 0) {
+            result += N % 2;
+            N = N / 2;
+        }
+
+        return StringUtil.reverse(result);
+    }
 
 }
