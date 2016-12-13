@@ -1,4 +1,4 @@
-package com.algo.Applications;
+package com.algo.applications;
 
 import java.io.File;
 

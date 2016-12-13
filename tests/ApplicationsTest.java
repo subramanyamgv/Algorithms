@@ -1,4 +1,4 @@
-import com.algo.Applications.FileSystemTraversal;
+import com.algo.applications.FileSystemTraversal;
 import org.junit.Test;
 
 import java.io.File;
