@@ -58,6 +58,10 @@ public class ExpressionsTest {
         PrefixParseTree pt = new PrefixParseTree("/*+23-642");
         PrefixParseTree.TreeNode root = pt.construct();
         pt.print(root);
+
+        PrefixParseTree pt1 = new PrefixParseTree("*+a**bc+def");
+        PrefixParseTree.TreeNode root1 = pt1.construct();
+        pt1.print(root1);
     }
 
     @Test
@@ -65,6 +69,7 @@ public class ExpressionsTest {
         PostfixParseTree pt = new PostfixParseTree("23+64-*2/");
         PostfixParseTree.TreeNode root = pt.construct();
         pt.print(root);
+        assertTrue((5 - pt.evaluate(root)) == 0.0);
     }
 
 }

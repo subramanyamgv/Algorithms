@@ -25,4 +25,24 @@ public abstract class ParseTree {
     public abstract TreeNode construct();
 
     public abstract void print(TreeNode root);
+
+    public double evaluate(TreeNode root) {
+
+        if (root == null)
+            return 0;
+
+        switch (root.data) {
+            case '+':
+                return evaluate(root.left) + evaluate(root.right);
+            case '*':
+                return evaluate(root.left) * evaluate(root.right);
+            case '-':
+                return evaluate(root.left) - evaluate(root.right);
+            case '/':
+                return evaluate(root.left) / evaluate(root.right);
+            default:
+                return root.data - '0';
+        }
+    }
+
 }
