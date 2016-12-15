@@ -10,6 +10,18 @@ public class PostfixParseTree extends ParseTree {
         i = expression.length();
     }
 
+    /**
+     * Create a parse tree from postfix expression
+     * i/p: ab+cd-*
+     * o/p:        *
+     *           /  \
+     *         +     -
+     *       /  \   / \
+     *      a    b c   d
+     *
+     * Use recursion and parse the expression left to right
+     * @return root
+     */
     @Override
     public TreeNode construct() {
 
@@ -23,15 +35,6 @@ public class PostfixParseTree extends ParseTree {
         }
 
         return t;
-    }
-
-    @Override
-    public void print(TreeNode root) {
-        if (root != null) {
-            print(root.left);
-            print(root.right);
-            System.out.print(root.data);
-        }
     }
 
 }

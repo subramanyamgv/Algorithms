@@ -1,7 +1,4 @@
-import com.algo.expressions.Postfix;
-import com.algo.expressions.PostfixParseTree;
-import com.algo.expressions.Prefix;
-import com.algo.expressions.PrefixParseTree;
+import com.algo.expressions.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -57,19 +54,26 @@ public class ExpressionsTest {
     public void prefixParseTree() {
         PrefixParseTree pt = new PrefixParseTree("/*+23-642");
         PrefixParseTree.TreeNode root = pt.construct();
-        pt.print(root);
+        pt.preorder(root);
 
         PrefixParseTree pt1 = new PrefixParseTree("*+a**bc+def");
         PrefixParseTree.TreeNode root1 = pt1.construct();
-        pt1.print(root1);
+        pt1.preorder(root1);
     }
 
     @Test
     public void postfixParseTree() {
         PostfixParseTree pt = new PostfixParseTree("23+64-*2/");
         PostfixParseTree.TreeNode root = pt.construct();
-        pt.print(root);
+        pt.postorder(root);
         assertTrue((5 - pt.evaluate(root)) == 0.0);
+    }
+
+    @Test
+    public void infixParseTree() {
+        InfixParseTree pt = new InfixParseTree("(((a+b)*(c-d))/e)");
+        ParseTree.TreeNode root = pt.construct();
+        pt.preorder(root);
     }
 
 }

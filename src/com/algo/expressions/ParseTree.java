@@ -12,6 +12,14 @@ public abstract class ParseTree {
         public TreeNode(Character data) {
             this.data = data;
         }
+
+        public TreeNode(Character data, TreeNode left, TreeNode right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
+
     }
 
     protected String expression;
@@ -23,8 +31,6 @@ public abstract class ParseTree {
     }
 
     public abstract TreeNode construct();
-
-    public abstract void print(TreeNode root);
 
     public double evaluate(TreeNode root) {
 
@@ -42,6 +48,24 @@ public abstract class ParseTree {
                 return evaluate(root.left) / evaluate(root.right);
             default:
                 return root.data - '0';
+        }
+    }
+
+    public void preorder(TreeNode root) {
+
+        if (root != null) {
+            System.out.print(root.data);
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+
+    public void postorder(TreeNode root) {
+
+        if (root != null) {
+            postorder(root.left);
+            System.out.print(root.data);
+            postorder(root.right);
         }
     }
 
