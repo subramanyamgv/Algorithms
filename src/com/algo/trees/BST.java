@@ -188,7 +188,7 @@ public class BST<E> {
     }
 
     /**
-     * Calculate the height of the Binary Tree iteratively
+     * Calculate the height of the Binary Tree iteratively, use post order
      * @return
      */
     public int heightIterative() {
@@ -421,6 +421,28 @@ public class BST<E> {
 
         return true;
 
+    }
+
+    public boolean isBalanced() {
+        return _isBalanced(root) != Integer.MIN_VALUE;
+    }
+
+    private int _isBalanced(TreeNode<E> root) {
+
+        if (root == null)
+            return 0;
+
+        int left = _isBalanced(root.left);
+        if (left == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+
+        int right = _isBalanced(root.right);
+        if (right == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+
+        if (Math.abs(left - right) > 1) {
+            return Integer.MIN_VALUE;
+        } else {
+            return Math.max(left, right) + 1;
+        }
     }
 
     public void BST2DoublyLinkedList() {

@@ -1,3 +1,4 @@
+import com.algo.graphs.ConnectedComponents;
 import com.algo.graphs.DepthFirstSearch;
 import com.algo.graphs.Graph;
 import org.junit.BeforeClass;
@@ -13,7 +14,7 @@ public class GraphTest {
     static Graph G = new Graph(13);
 
     @BeforeClass
-    public static void GraphTest() {
+    public static void init() {
 
         //     (0)------ (6)       (7)---(8)
         //     /|\        |
@@ -31,10 +32,11 @@ public class GraphTest {
         G.addEdge(5,4);
         G.addEdge(0,2);
         G.addEdge(11,12);
-        G.addEdge(9,10);
+        G.addEdge(9,12);
         G.addEdge(0,6);
         G.addEdge(7,8);
         G.addEdge(9,11);
+        G.addEdge(9,7);
         G.addEdge(5,3);
 
 //        System.out.println(G);
@@ -43,10 +45,14 @@ public class GraphTest {
 
     @Test
     public void DFSTest() {
-
-        DepthFirstSearch dfs = new DepthFirstSearch(G, 9);
+        DepthFirstSearch dfs = new DepthFirstSearch(G, 0);
         System.out.println(dfs.visited());
     }
 
+    @Test
+    public void ConnectedComponentsTest() {
+        ConnectedComponents cc = new ConnectedComponents(G);
+        assertEquals(3, cc.count());
+    }
 
 }

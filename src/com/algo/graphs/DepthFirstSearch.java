@@ -13,15 +13,14 @@ public class DepthFirstSearch {
     private Set<Integer> visited;
 
     /**
-     *
      * @param G
      * @param s
      */
     public DepthFirstSearch(Graph G, int s) {
         visited = new HashSet<Integer>();
 
-        DFS(G, s);
-//        DFSIterative(G, s);
+//        DFS(G, s);
+        DFSIterative(G, s);
     }
 
     private void DFS(Graph G, int s) {
@@ -47,10 +46,10 @@ public class DepthFirstSearch {
         while (!stack.isEmpty()) {
 
             int v = stack.pop();
+            visited.add(v);
 
-            if (!visited.contains(v)) {
-                visited.add(v);
-                for (int w : G.adj(v))
+            for (int w : G.adj(v)) {
+                if (!visited.contains(w))
                     stack.push(w);
             }
         }

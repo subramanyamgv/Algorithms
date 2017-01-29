@@ -3,7 +3,7 @@ package com.algo.applications;
 import static com.algo.ADT.*;
 
 /**
- * A text editor data buffer management
+ * A text editor data queue management
  *
  * Created by Subramanyam on 07-Dec-2016.
  */
@@ -12,7 +12,7 @@ public class TextEditorBuffer {
     Stack<Character> lStack, rStack;
 
     /**
-     * Creates an empty buffer
+     * Creates an empty queue
      */
     public TextEditorBuffer() {
         lStack = new Stack<Character>();
@@ -70,7 +70,7 @@ public class TextEditorBuffer {
     }
 
     /**
-     * Return size of buffer;
+     * Return size of queue;
      * @return
      */
     public int size() {

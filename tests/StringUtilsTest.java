@@ -12,6 +12,9 @@ public class StringUtilsTest {
     @Test
     public void reverseTest() {
         String str = "abcdef";
+
+        String subStr = str.substring(1, 0);
+
         assertEquals("fedcba", su.reverse(str));
     }
 

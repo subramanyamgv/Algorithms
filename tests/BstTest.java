@@ -114,7 +114,7 @@ public class BstTest {
 
         bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        LinkedList<Integer> list = bst.postOrderTraversal2(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
+        LinkedList<Integer> list = bst.postOrderTraversal(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
             @Override
             public void updated(ADT.Stack<BST.TreeNode<Integer>> stack) {
 
