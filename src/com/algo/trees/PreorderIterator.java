@@ -1,6 +1,6 @@
 package com.algo.trees;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.Iterator;
 
@@ -9,7 +9,7 @@ import java.util.Iterator;
  */
 class PreorderIterator<E> implements Iterator<E> {
 
-    private ADT.Stack<BST.TreeNode<E>> stack = new ADT.Stack<BST.TreeNode<E>>();
+    private Stack<BST.TreeNode<E>> stack = new Stack<BST.TreeNode<E>>();
     private BST.TreeNode<E> current;
 
     public PreorderIterator(BST.TreeNode<E> root) {

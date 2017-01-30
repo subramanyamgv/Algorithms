@@ -1,4 +1,4 @@
-import com.algo.ADT;
+import com.algo.adt.*;
 import com.algo.LinkedList;
 import com.algo.trees.BST;
 import org.junit.Test;
@@ -62,11 +62,11 @@ public class BstTest {
 
         bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        LinkedList<Integer> list = bst.inorderTraversal(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
+        LinkedList<Integer> list = bst.inorderTraversal(new Stack.StackListener<BST.TreeNode<Integer>>() {
             @Override
-            public void updated(ADT.Stack<BST.TreeNode<Integer>> stack) {
+            public void updated(Stack<BST.TreeNode<Integer>> stack) {
 
-                Iterator<BST.TreeNode<Integer>> itr = stack.getIterator();
+                Iterator<BST.TreeNode<Integer>> itr = stack.iterator();
 
                 while (itr.hasNext()) {
                     System.out.format("%d, ", itr.next().getData());
@@ -88,11 +88,11 @@ public class BstTest {
 
         bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        LinkedList<Integer> list = bst.preorderTraversal(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
+        LinkedList<Integer> list = bst.preorderTraversal(new Stack.StackListener<BST.TreeNode<Integer>>() {
             @Override
-            public void updated(ADT.Stack<BST.TreeNode<Integer>> stack) {
+            public void updated(Stack<BST.TreeNode<Integer>> stack) {
 
-                Iterator<BST.TreeNode<Integer>> itr = stack.getIterator();
+                Iterator<BST.TreeNode<Integer>> itr = stack.iterator();
 
                 while (itr.hasNext()) {
                     System.out.format("%d, ", itr.next().getData());
@@ -114,11 +114,11 @@ public class BstTest {
 
         bst.init(new Integer[]{8, 3, 10, 1, 6, 14, 4, 7, 13});
 
-        LinkedList<Integer> list = bst.postOrderTraversal(new ADT.Stack.StackListener<BST.TreeNode<Integer>>() {
+        LinkedList<Integer> list = bst.postOrderTraversal(new Stack.StackListener<BST.TreeNode<Integer>>() {
             @Override
-            public void updated(ADT.Stack<BST.TreeNode<Integer>> stack) {
+            public void updated(Stack<BST.TreeNode<Integer>> stack) {
 
-                Iterator<BST.TreeNode<Integer>> itr = stack.getIterator();
+                Iterator<BST.TreeNode<Integer>> itr = stack.iterator();
 
                 while (itr.hasNext()) {
                     System.out.format("%d] ", itr.next().getData());

@@ -5,7 +5,7 @@ import com.algo.LinkedList;
 import java.util.Comparator;
 import java.util.Iterator;
 
-import static com.algo.ADT.*;
+import com.algo.adt.*;
 
 /**
  * Created by Subramanyam on 29-Nov-2016.
@@ -210,8 +210,8 @@ public class BST<E> {
                 temp = (stack.isEmpty()) ? null : stack.peek().right;
             }
 
-            if (stack.getCount() > height)
-                height = stack.getCount();
+            if (stack.size() > height)
+                height = stack.size();
         }
 
         return height;

@@ -1,7 +1,7 @@
 package com.algo;
 
 
-import static com.algo.ADT.*;
+import com.algo.adt.*;
 
 /**
      * Synchronized BoundedQueue
@@ -19,7 +19,7 @@ public class BoundingQueue<T> {
 
     public synchronized T get() throws InterruptedException {
 
-        while (buffer.isEmpty()) {
+        while (buffer.isEmpty()) { //For multiple consumers
             wait();
         }
 
@@ -30,7 +30,7 @@ public class BoundingQueue<T> {
 
     public synchronized void put(T data) throws InterruptedException  {
 
-        if (buffer.getCount() == size)
+        if (buffer.size() == size)
             wait();
 
         buffer.offer(data);

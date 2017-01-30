@@ -1,8 +1,8 @@
 package com.algo.applications;
 
-import java.io.File;
+import com.algo.adt.Stack;
 
-import static com.algo.ADT.*;
+import java.io.File;
 
 /**
  * Created by Subramanyam on 07-Dec-2016.

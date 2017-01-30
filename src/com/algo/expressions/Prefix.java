@@ -1,6 +1,6 @@
 package com.algo.expressions;
 
-import static com.algo.ADT.*;
+import com.algo.adt.*;
 
 /**
  * Created by Subramanyam on 13-Dec-2016.

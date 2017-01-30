@@ -1,6 +1,6 @@
 package com.algo.graphs;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class BreadthFirstSearch {
      */
     private void BFS(Graph G, int s) {
 
-        ADT.Queue<Integer> Q = new ADT.Queue<Integer>();
+        Queue<Integer> Q = new Queue<Integer>();
         Q.offer(s);
 
         while (!Q.isEmpty()) {

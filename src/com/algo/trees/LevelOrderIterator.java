@@ -1,6 +1,6 @@
 package com.algo.trees;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.Iterator;
 
@@ -10,7 +10,7 @@ import java.util.Iterator;
  */
 class LevelOrderIterator<E> implements Iterator<E> {
 
-    ADT.Queue<BST.TreeNode<E>> queue = new ADT.Queue<BST.TreeNode<E>>();
+    Queue<BST.TreeNode<E>> queue = new Queue<BST.TreeNode<E>>();
     BST.TreeNode<E> current;
 
     public LevelOrderIterator(BST.TreeNode<E> root) {

@@ -1,6 +1,6 @@
 package com.algo.trees;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.Iterator;
 
@@ -10,7 +10,7 @@ import java.util.Iterator;
  */
 class InorderIterator<E> implements Iterator<E> {
 
-    private ADT.Stack<BST.TreeNode<E>> stack = new ADT.Stack<BST.TreeNode<E>>();
+    private Stack<BST.TreeNode<E>> stack = new Stack<BST.TreeNode<E>>();
     private BST.TreeNode<E> current;
 
     public InorderIterator(BST.TreeNode<E> root) {
@@ -21,8 +21,8 @@ class InorderIterator<E> implements Iterator<E> {
     public boolean hasNext() {
 
         while (current != null) {
-            stack.push(current);
-            current = current.left;
+                stack.push(current);
+                current = current.left;
         }
 
         current = stack.pop();

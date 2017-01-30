@@ -1,6 +1,6 @@
 package com.algo.trees;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.Iterator;
 
@@ -9,7 +9,7 @@ import java.util.Iterator;
  */
 class PostOrderIterator<E> implements Iterator<E> {
 
-    ADT.Stack<BST.TreeNode<E>> stack = new ADT.Stack<BST.TreeNode<E>>();
+    Stack<BST.TreeNode<E>> stack = new Stack<BST.TreeNode<E>>();
     BST.TreeNode<E> current;
 
     public PostOrderIterator(BST.TreeNode<E> root) {

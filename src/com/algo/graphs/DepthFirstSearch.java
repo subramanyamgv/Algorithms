@@ -1,6 +1,6 @@
 package com.algo.graphs;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +40,7 @@ public class DepthFirstSearch {
      */
     private void DFSIterative(Graph G, int s) {
 
-        ADT.Stack<Integer> stack = new ADT.Stack<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
         stack.push(s);
 
         while (!stack.isEmpty()) {

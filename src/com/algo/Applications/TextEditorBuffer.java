@@ -1,6 +1,6 @@
 package com.algo.applications;
 
-import static com.algo.ADT.*;
+import com.algo.adt.*;
 
 /**
  * A text editor data queue management
@@ -50,7 +50,7 @@ public class TextEditorBuffer {
      */
     public void left(int k) {
 
-        while (k != 0 && k < lStack.getCount()) {
+        while (k != 0 && k < lStack.size()) {
             rStack.push(lStack.pop());
             k--;
         }
@@ -63,7 +63,7 @@ public class TextEditorBuffer {
      */
     public void right(int k) {
 
-        while (k != 0 && k < rStack.getCount()) {
+        while (k != 0 && k < rStack.size()) {
             lStack.push(rStack.pop());
             k--;
         }
@@ -74,6 +74,6 @@ public class TextEditorBuffer {
      * @return
      */
     public int size() {
-        return lStack.getCount() + rStack.getCount();
+        return lStack.size() + rStack.size();
     }
 }

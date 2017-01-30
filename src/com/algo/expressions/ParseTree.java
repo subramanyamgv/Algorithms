@@ -18,8 +18,6 @@ public abstract class ParseTree {
             this.left = left;
             this.right = right;
         }
-
-
     }
 
     protected String expression;

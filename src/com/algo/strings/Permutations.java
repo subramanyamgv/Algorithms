@@ -9,7 +9,6 @@ import java.util.TreeSet;
  */
 public class Permutations {
 
-
     public void printPermutations(String str) {
         _printPermutations("", str);
     }
@@ -50,6 +49,5 @@ public class Permutations {
         set.add(str.charAt(n));
         _powerSet(str, n-1, set);
     }
-
 
 }

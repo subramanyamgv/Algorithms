@@ -1,6 +1,6 @@
 package com.algo.graphs;
 
-import com.algo.ADT;
+import com.algo.adt.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,7 +41,7 @@ public class Paths {
 
     public Iterable<Integer> pathTo(int v) {
 
-        ADT.Stack<Integer> path = new ADT.Stack<Integer>();
+        Stack<Integer> path = new Stack<Integer>();
 
         for (int x = v ; x != s ; x = parent[x]) {
             path.push(x);

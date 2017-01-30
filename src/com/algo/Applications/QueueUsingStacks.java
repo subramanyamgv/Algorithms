@@ -1,6 +1,6 @@
 package com.algo.applications;
 
-import static com.algo.ADT.*;
+import com.algo.adt.*;
 
 /**
  * Created by Subramanyam on 07-Dec-2016.
@@ -46,6 +46,6 @@ public class QueueUsingStacks<E> {
     }
 
     public int count() {
-        return S1.getCount() + S2.getCount();
+        return S1.size() + S2.size();
     }
 }
